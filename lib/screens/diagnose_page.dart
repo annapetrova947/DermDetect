@@ -1,0 +1,147 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:skindetect/blocs/prediction.dart';
+import 'package:skindetect/components/range_bar.dart';
+import 'package:skindetect/components/scaffold_with_nav.dart';
+import 'package:skindetect/data_model/diagnosis.dart';
+import 'package:skindetect/main.dart';
+import 'package:skindetect/util/colors.dart';
+import 'package:skindetect/util/text_styles.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../components/button.dart';
+import '../components/custom_app_bar.dart';
+import '../components/my_lesion_looks_different_info.dart';
+import '../util/cancer_type_info.dart';
+
+PredictionCubit predictionBloc = PredictionCubit();
+
+class DiagnosePage extends StatefulWidget {
+  DiagnosePage({super.key}) {
+    color.toGray();
+  }
+
+  @override
+  State<DiagnosePage> createState() => _DiagnosePageState();
+}
+
+class _DiagnosePageState extends State<DiagnosePage> {
+  late Icon currentIcon;
+
+  @override
+  void initState() {
+    super.initState();
+    currentIcon = Icon(
+      Icons.save_alt_sharp,
+      color: kBlack,
+      size: 28,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PredictionCubit, Prediction>(
+        bloc: predictionBloc,
+        builder: (context, state) {
+          CancerTypeEntry cTypeEntry =
+              cTypes.firstWhere((entry) => entry.shortLabel == state.label);
+          return Stack(
+            children: [
+              Container(
+                  padding: EdgeInsets.all(25),
+                  decoration: BoxDecoration(color: kGray),
+                  child: Column(
+                    children: [
+                      CustomAppBar(
+                        title: "Диагнозы",
+                        trailing: InkWell(
+                          onTap: () async {
+                            Diagnosis diagnosis = Diagnosis()
+                              ..label = state.label
+                              ..confidence = state.confidence
+                              ..image = state.binaryImg
+                              ..createdAt = DateTime.now().toUtc();
+                            setState(() {
+                              currentIcon = Icon(
+                                Icons.check,
+                                size: 28,
+                                color: kBlack,
+                              );
+                            });
+                            historyBox.add(diagnosis);
+                          },
+                          child: currentIcon,
+                        ),
+                      ),
+                      Expanded(
+                        child: SingleChildScrollView(
+                            scrollDirection: Axis.vertical,
+                            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                              Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                                Expanded(
+                                    child: AspectRatio(
+                                        aspectRatio: 1,
+                                        child: ClipRRect(
+                                            borderRadius: BorderRadius.circular(15),
+                                            child: Image.memory(
+                                              state.binaryImg,
+                                              alignment: Alignment.center,
+                                              fit: BoxFit.cover,
+                                            )))),
+                                const SizedBox(width: 10),
+                                Expanded(
+                                    child: Padding(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: Column(children: [
+                                    FittedBox(
+                                      fit: BoxFit.fitWidth,
+                                      child: Text(
+                                        cTypeEntry.type.replaceAll(' ', '\n'),
+                                        textAlign: TextAlign.center,
+                                        style: kAppbarHeader,
+                                      ),
+                                    ),
+                                    SizedBox(height: 5),
+                                    GestureDetector(
+                                        onTap: () => {context.push("/faq/ct/${cTypeEntry.id}")},
+                                        child: Text(
+                                          "Подробнее",
+                                          textAlign: TextAlign.center,
+                                          style: TextStyle(
+                                              color: kBlue,
+                                              fontSize: 16,
+                                              fontWeight: FontWeight.w600),
+                                        )),
+                                  ]),
+                                )),
+                              ]),
+                              const SizedBox(height: 30),
+                              Text(
+                                  "Вероятность: ${double.parse((state.confidence * 95).toStringAsFixed(2))}%",
+                                  style: kAppbarHeader),
+                              const SizedBox(height: 25),
+                              Text("Рекомендации", style: kAppbarHeader),
+                              const SizedBox(height: 10),
+                              Text(cTypeEntry.riskText,
+                                  style: TextStyle(color: kDarkGray, fontSize: 16)),
+                              const SizedBox(height: 20),
+                              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+                              ]),
+                              const SizedBox(height: 40),
+                            ])),
+                      )
+                    ],
+                  )),
+              Positioned(
+                bottom: 20,
+                left: 0,
+                right: 0,
+                child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                ]),
+              )
+            ],
+          );
+        });
+  }
+}
