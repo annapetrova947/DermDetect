@@ -1,17 +1,9 @@
-import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
-import 'package:skindetect/components/range_bar.dart';
 import 'package:skindetect/components/scaffold_with_nav.dart';
 import 'package:skindetect/util/colors.dart';
 import 'package:skindetect/util/text_styles.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../components/button.dart';
 import '../components/custom_app_bar.dart';
-import '../components/my_lesion_looks_different_info.dart';
 import '../util/cancer_type_info.dart';
-import '../util/faq_info.dart';
-import '../util/triangle_clipper.dart';
 
 class CancerTypeDetailPage extends StatelessWidget {
   CancerTypeDetailPage({required this.cancerTypeId}) {
@@ -67,10 +59,6 @@ class CancerTypeDetailPage extends StatelessWidget {
                             const SizedBox(height: 25),
                             Text("О новообразовании", style: kAppbarHeader),
                             const SizedBox(height: 10),
-                            // Text(cTypeEntry.riskText,
-                            //     style:
-                            //         TextStyle(color: kDarkGray, fontSize: 16)),
-                            // const SizedBox(height: 20),
                             Column(
                                 crossAxisAlignment: CrossAxisAlignment.stretch,
                                 children: [
@@ -91,21 +79,6 @@ class CancerTypeDetailPage extends StatelessWidget {
                 )
               ],
             )),
-        // Positioned(
-        //   bottom: 20,
-        //   left: 0,
-        //   right: 0,
-        //   child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-        //     Button(
-        //       label: cTypeEntry.linkLabel ?? "More Information",
-        //       onTap: () async {
-        //         final Uri link = Uri.parse(cTypeEntry.link);
-        //         if (await canLaunchUrl(link)) launchUrl(link);
-        //       },
-        //       withShadow: true,
-        //     )
-        //   ]),
-        // )
       ],
     );
   }

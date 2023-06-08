@@ -5,7 +5,6 @@ import 'package:skindetect/components/scaffold_with_nav.dart';
 import 'package:skindetect/data_model/diagnosis.dart';
 import 'package:skindetect/main.dart';
 import 'package:skindetect/util/harm_levels.dart';
-
 import '../util/colors.dart';
 import '../util/date_formatter.dart';
 
@@ -119,19 +118,22 @@ class HistoryPage extends StatelessWidget {
                                 ),
                               ),
                               const SizedBox(width: 20),
-                              Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(harmLabels[scan.label]!,
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 15,
-                                            color: kBlack)),
-                                    const SizedBox(height: 2),
-                                    Text(df.format(scan.createdAt.toLocal()),
-                                        style: TextStyle(
-                                            color: kDarkGray, fontSize: 13))
-                                  ]),
+                              Flexible(
+                                child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(harmLabels[scan.label]!,
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 15,
+                                              color: kBlack)),
+                                      const SizedBox(height: 2),
+                                      
+                                      Text(df.format(scan.createdAt.toLocal()),
+                                          style: TextStyle(
+                                              color: kDarkGray, fontSize: 13))
+                                    ]),
+                              ),
                             ]),
                           ),
                         )),

@@ -8,7 +8,6 @@ import 'package:skindetect/screens/faq_page.dart';
 import 'package:skindetect/screens/home_page.dart';
 import 'package:skindetect/screens/history_page.dart';
 import 'package:skindetect/screens/home_warning_page.dart';
-import 'package:skindetect/screens/question_detail_page.dart';
 import '../components/scaffold_with_nav.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -61,17 +60,6 @@ final GoRouter _nakiRouter = GoRouter(
               return NoTransitionPage(key: state.pageKey, child: FaqPage());
             },
             routes: [
-              GoRoute(
-                  path: "q/:questionId",
-                  pageBuilder: (context, state) {
-                    return CustomTransitionPage<void>(
-                      key: state.pageKey,
-                      restorationId: state.pageKey.value,
-                      child: QuesitonDetailPage(questionId: state.params["questionId"]!),
-                      transitionDuration: Duration(milliseconds: 400),
-                      transitionsBuilder: slideTransitionBuilder,
-                    );
-                  }),
               GoRoute(
                   path: "ct/:cancerTypeId",
                   pageBuilder: (context, state) {

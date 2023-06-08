@@ -2,18 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skindetect/blocs/prediction.dart';
-import 'package:skindetect/components/range_bar.dart';
 import 'package:skindetect/components/scaffold_with_nav.dart';
 import 'package:skindetect/data_model/diagnosis.dart';
 import 'package:skindetect/main.dart';
 import 'package:skindetect/util/colors.dart';
 import 'package:skindetect/util/text_styles.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../components/button.dart';
 import '../components/custom_app_bar.dart';
-import '../components/my_lesion_looks_different_info.dart';
 import '../util/cancer_type_info.dart';
+import 'package:intl/intl.dart';
 
 PredictionCubit predictionBloc = PredictionCubit();
 
@@ -54,14 +50,14 @@ class _DiagnosePageState extends State<DiagnosePage> {
                   child: Column(
                     children: [
                       CustomAppBar(
-                        title: "Диагнозы",
+                        title: "Диагноз",
                         trailing: InkWell(
                           onTap: () async {
                             Diagnosis diagnosis = Diagnosis()
                               ..label = state.label
                               ..confidence = state.confidence
                               ..image = state.binaryImg
-                              ..createdAt = DateTime.now().toUtc();
+                              ..createdAt = DateTime.now().toLocal();
                             setState(() {
                               currentIcon = Icon(
                                 Icons.check,
@@ -118,7 +114,7 @@ class _DiagnosePageState extends State<DiagnosePage> {
                               ]),
                               const SizedBox(height: 30),
                               Text(
-                                  "Вероятность: ${double.parse((state.confidence * 95).toStringAsFixed(2))}%",
+                                  "Вероятность: ${double.parse((state.confidence * 83).toStringAsFixed(2))}%",
                                   style: kAppbarHeader),
                               const SizedBox(height: 25),
                               Text("Рекомендации", style: kAppbarHeader),

@@ -13,11 +13,6 @@ const history = "history";
 late Box<Diagnosis> historyBox;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Tflite.loadModel(
-  //   model: "assets/model_alternative.tflite",
-  //   labels: "assets/labels_alternative.txt",
-  //   numThreads: 1, // defaults to 1
-  // );
   await Hive.initFlutter();
   Hive.registerAdapter(DiagnosisAdapter());
 

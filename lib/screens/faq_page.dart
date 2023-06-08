@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:skindetect/components/scaffold_with_nav.dart';
 import 'package:skindetect/util/cancer_type_info.dart';
-import 'package:skindetect/util/faq_info.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../components/button.dart';
 import '../components/faq_row.dart';
 
 final contactLink = Uri.parse(

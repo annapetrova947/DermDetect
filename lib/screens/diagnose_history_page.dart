@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:skindetect/components/range_bar.dart';
 import 'package:skindetect/components/scaffold_with_nav.dart';
 import 'package:skindetect/data_model/diagnosis.dart';
 import 'package:skindetect/main.dart';
 import 'package:skindetect/util/colors.dart';
 import 'package:skindetect/util/text_styles.dart';
-import 'package:url_launcher/url_launcher.dart';
-
-import '../components/button.dart';
 import '../components/custom_app_bar.dart';
-import '../components/my_lesion_looks_different_info.dart';
 import '../util/cancer_type_info.dart';
 
 class DiagnoseHistoryPage extends StatelessWidget {
@@ -90,7 +85,7 @@ class DiagnoseHistoryPage extends StatelessWidget {
                               ]),
                               const SizedBox(height: 30),
                               Text(
-                                  "Вероятность: ${double.parse((scan.confidence * 95).toStringAsFixed(2))}%",
+                                  "Вероятность: ${double.parse((scan.confidence * 83).toStringAsFixed(2))}%",
                                   style: kAppbarHeader),
                               const SizedBox(height: 25),
 

@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
@@ -7,9 +6,6 @@ import 'package:skindetect/classifiers/classifier_float.dart';
 import 'package:skindetect/components/button.dart';
 import 'package:skindetect/components/scaffold_with_nav.dart';
 import 'package:skindetect/screens/diagnose_page.dart';
-import 'package:skindetect/util/colors.dart';
-
-// import 'package:tflite/tflite.dart';
 import 'package:image/image.dart' as img;
 
 final ImagePicker _picker = ImagePicker();

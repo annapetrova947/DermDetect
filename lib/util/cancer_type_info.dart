@@ -143,18 +143,5 @@ final List<CancerTypeEntry> cTypes = [
       'https://www.ssmhealth.com/cardinal-glennon/pediatric-plastic-reconstructive-surgery/hemangiomas',
       riskText: harmlessTreatmentPossible,
       picture: "assets/images/vasc.png"),
-  // const CancerTypeEntry(
-  //     id: 8,
-  //     type: "Плоскоклеточный рак",
-  //     shortLabel: "scc",
-  //     risk: 0.6,
-  //     description: 'Плоскоклеточный рак кожи - распространенная форма рака кожи, которая развивается в плоских клетках, составляющих средний и наружный слои кожи. Плоскоклеточный рак кожи обычно не опасен для жизни, хотя может быть агрессивным. Нелеченный плоскоклеточный рак кожи может увеличиться в размерах или распространиться на другие части вашего тела, вызывая серьезные осложнения. Большинство плоскоклеточных карцином кожи возникает в результате длительного воздействия ультрафиолетового излучения, либо от солнечного света, либо от соляриев и ламп. Избегание ультрафиолетового излучения помогает снизить риск плоскоклеточного рака кожи и других форм рака кожи. Плоскоклеточный рак кожи чаще всего возникает на коже, подверженной воздействию солнца, такой как волосистая часть головы, тыльные стороны ладоней, уши или губы. Но это может произойти на любом участке тела, в том числе во рту, на подошвах ног и на гениталиях. Признаки и симптомы плоскоклеточного рака кожи включают:  Твердый красный узелок, плоская язвочка с чешуйчатой коркой, новая язвочка или приподнятый участок на старом шраме или язве, грубое чешуйчатое пятно на губе, которое может развиться в открытую язву, красную язвочку или шероховатое пятно во рту, красное, выпуклое пятно или бородавкообразная язва на заднем проходе или на ваших гениталиях.',
-  //     descriptionShort:
-  //     'Squamous cell carcinoma of the skin is a common form of skin cancer that develops in the squamous cells that make up the middle and outer layers of the skin.Squamous cell carcinoma of the skin is usually not life-threatening, though it can be aggressive. Untreated, squamous cell carcinoma of the skin can grow large or spread to other parts of your body, causing serious complications.Most squamous cell carcinomas of the skin result from prolonged exposure to ultraviolet (UV) radiation, either from sunlight or from tanning beds or lamps. Avoiding UV light helps reduce your risk of squamous cell carcinoma of the skin and other forms of skin cancer.\n\n(Source: mayoclinic.org)',
-  //     link:
-  //     'https://www.mayoclinic.org/diseases-conditions/squamous-cell-carcinoma/symptoms-causes/syc-20352480#',
-  //     riskText: mediumTreatment,
-  //     picture:"assets/images/scc.jpg",
-  // )
-  //,
+
 ];

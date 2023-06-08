@@ -7,6 +7,3 @@ const Color kBlue = Color.fromRGBO(159, 187, 244, 1);
 const Color kBlack = Color.fromRGBO(36, 40, 44, 1);
 const Color kBlackShadow = Color.fromRGBO(36, 40, 44, 0.3);
 const Color kBlueLigth = Color.fromRGBO(179, 194, 255, 1);
-
-
-//196, 186, 255, 1
